@@ -1,0 +1,14 @@
+{
+  "name": "fit-connect",
+  "version": "1.0.0",
+  "description": "Fit Connect",
+  "main": "index.js",
+  "scripts": {
+	"start":"electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.1"
+  }
+}
