@@ -13,7 +13,7 @@ async function handleSignup(event, data){
     // Create a POST request to express server
     const request = net.request({
 	method: 'POST',
-	url: 'http://localhost:3000/',
+	url: 'http://localhost:3000/signup',
     })
     request.setHeader('Content-Type', 'application/json')
 
