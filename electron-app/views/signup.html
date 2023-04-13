@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+	<link href="../styles.css" rel="stylesheet">
+	<title>Sign Up</title>
+    </head>
+    <body>
+	<h3><a href="index.html">Back</a></h3>
+	<h1>Sign Up</h1>
+	<div>
+	    <form>
+		<input type="text" id="email" placeholder="Email"><br>
+		<input type="text" id="username" placeholder="User Name"><br>
+		<input type="password" id="password" placeholder="Password"><br>
+		<input type="password" id="conf-password" placeholder="Confirm Password"><br>
+		<button id="signup-btn">Sign Up!</button>
+	    </form>
+	</div>
+
+
+	<script src="../scripts/signup.js"></script>
+    </body>
+</html>
