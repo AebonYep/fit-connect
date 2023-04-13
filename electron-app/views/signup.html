@@ -11,16 +11,13 @@
 	<h3><a href="index.html">Back</a></h3>
 	<h1>Sign Up</h1>
 	<div>
-	    <form>
-		<input type="text" id="email" placeholder="Email"><br>
-		<input type="text" id="username" placeholder="User Name"><br>
-		<input type="password" id="password" placeholder="Password"><br>
-		<input type="password" id="conf-password" placeholder="Confirm Password"><br>
-		<button id="signup-btn">Sign Up!</button>
-	    </form>
+	    <input type="email" id="email-input" placeholder="Email" required><br>
+	    <input type="text" id="name-input" placeholder="User Name" required><br>
+	    <input type="password" id="pass-input" placeholder="Password" required><br>
+	    <input type="password" id="v-pass-input" placeholder="Confirm Password" required><br>
+	    <button id="signup-btn">Sign Up!</button>
 	</div>
 
-
-	<script src="../scripts/signup.js"></script>
+	<script src="../scripts/render/signup.js"></script>
     </body>
 </html>

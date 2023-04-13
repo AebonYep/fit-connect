@@ -2,6 +2,14 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
+// Custom modules
+const signupModule = require('./scripts/main/signup.js')
+
+
+
+function handleIPC(){
+    ipcMain.handle('account:signup', signupModule.handleSignup)
+}
 
 function createWindow () {
     // Create the browser window.
@@ -21,6 +29,7 @@ function createWindow () {
 }
 
 app.whenReady().then(() => {
+    handleIPC()
     createWindow()
 
     app.on('activate', function () {
@@ -34,4 +43,5 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
 
