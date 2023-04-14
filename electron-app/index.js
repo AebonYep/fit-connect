@@ -6,7 +6,6 @@ const path = require('path')
 const signupModule = require('./scripts/main/signup.js')
 
 
-
 function handleIPC(){
     ipcMain.handle('account:signup', signupModule.handleSignup)
 }
