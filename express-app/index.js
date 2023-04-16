@@ -1,33 +1,22 @@
 const express = require('express')
-const mysql = require('mysql')
+const pool = require('./mysqlConnection')
+
+// Routes
+const accountsRoute = require('./routes/accounts')
+const postsRoute = require('./routes/posts')
 
 const app = express()
 const port = 3000
 
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    password: "test",
-    database: "fit_connect"
-});
-
 app.use(express.json())
-
-app.post('/signup', (req, res) => {
-    console.log(req.body)
-
-    var sql = `INSERT INTO user_accounts (email, name, password) VALUES ('${req.body.email}','${req.body.name}','${req.body.password}')`
-    con.query(sql, function (err, result) {
-	if (err) throw err
-	console.log("1 record inserted")
-    })
-    res.send('Success')
-})
+app.use('/users', accountsRoute)
+app.use('/posts', postsRoute)
 
 app.listen(port, () => {
-    con.connect(function(err) {
+    pool.connect(function(err) {
 	if (err) throw err;
-	console.log("Connected!");
+	console.log("Connected!")
     })
     console.log(`Listening on port ${port}`)
 })
+

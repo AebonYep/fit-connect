@@ -1,0 +1,47 @@
+GET "/users/" will get all the users names, ids and bio
+
+GET "/users/id=:userID" will get the name and bio of the user with that user id
+EXAMPLE: "/users/id=1" 
+
+GET "/users/id=:userID/followers" will get the name and id of the followers of the user with that user id
+EXAMPLE: "/users/id=1/followers" 
+
+GET "/users/id=:userID/posts" will get the content of the posts of the user with that user id
+EXAMPLE: "/users/id=1/posts" 
+
+GET "/posts/" will get all the posts
+
+GET "/posts/id=:postID" will get the post with that postID
+EXAMPLE: "/posts/id=2"
+
+POST "/users/signup" will create a new user, if it is successful it will return the new user id, the user data should be in json form sent in the body
+EXAMPLE BODY:
+    {
+	"email": "test@mail.com",
+	"name": "test_name",
+	"password": "test_password"
+    }
+
+POST "/users/login" will attempt to log in, if it is successful it will return the users id, the user data should be in json form sent in the body 
+EXAMPLE BODY:
+    {
+	"email": "test@mail.com",
+	"password": "test_password"
+    }
+
+POST "/users/id=:userID/bio" will add a bio to an account based, the bio should be in json form in the body 
+EXAMPLE CALL: "/users/id=2/bio"
+EXAMPLE BODY:
+    {
+	"content": "this is an example bio",
+    }
+
+POST "/posts/id=userID/create" will create a new post, the post data should be in json form in the body
+EXAMPLE CALL: "/users/id=2/create"
+EXAMPLE BODY:
+    {
+	"content": "this is an example post"
+    }
+
+
+    
