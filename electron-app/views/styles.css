@@ -5,6 +5,8 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+
+
 .navbar{
     background: grey;
     height: 80px;
@@ -30,7 +32,7 @@
 
 }
 
-#navbar__logo{
+#navbar__main{
     background-color: #ff8177;
     background-image: linear-gradient(to top, #ff0844 0%,#ffb199 100%);
     background-size: 100%;
@@ -45,9 +47,7 @@
     font-size: 20px;
 }
 
-.fa-gem {
-    margin-right: 8px;
-}
+
 
 .navbar__menu {
     display: flex;
@@ -106,3 +106,5 @@
     color: #f77062;
     transition: all 0.3s ease;
 }
+
+
