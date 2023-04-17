@@ -182,20 +182,37 @@ h1{
     font-size: 18px;
   }
   
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
+  #profile-pic {
+    float: left;
+    margin-right: 20px;
+    /* If you want to crop the image to a certain size, use something like this */
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+  }
+
+  #imageUpload
+  {
+      display: none;
   }
   
+  #profileImage
+  {
+      cursor: pointer;
+  }
   
-  button:hover, a:hover {
-    opacity: 0.7;
+  #profile-container {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+  }
+  
+  #profile-container img {
+      width: 150px;
+      height: 150px;
   }
