@@ -3,10 +3,11 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
 // Custom modules
-const signupModule = require('./scripts/main/signup.js')
+const accountModule = require('./scripts/main/accounts.js')
 
 function handleIPC(){
-    ipcMain.handle('account:signup', signupModule.handleSignup)
+    ipcMain.handle('account:login', accountModule.handleLogin)
+    ipcMain.handle('account:signup', accountModule.handleSignup)
 }
 
 function createWindow () {
@@ -15,7 +16,8 @@ function createWindow () {
 	width: 800,
 	height: 600,
 	webPreferences: {
-	    preload: path.join(__dirname, 'preload.js')
+	    nodeIntegration: true,
+	    contextIsolation: false,
 	}
     })
 
