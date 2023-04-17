@@ -51,9 +51,13 @@
         <br>
         <div class="profile">
           <img src="Images/placeholder-image.png" id = "image" alt="Profile" style="width:100%">
-          <h1 class = "username">John Doe</h1>
-          <h1 class="bio">Bio</h1>
-          <button>Contact</button>
+          <input type="file" id="myFile" name="filename">
+          
+          <h1>Name: This needs to be linked to backend so this outputs username onto screen</h1>
+          <label for="bioTextBox">Bio: </label>
+          <textarea id="bioTextBox" name="bioTextBox" rows="9" cols="50" placeholder="This needs to be the users bio text. Needs to be linked to backend."></textarea>
+          <br>
+          <button type  ="submit">Update profile</button>
         </div>
       </form>
    
