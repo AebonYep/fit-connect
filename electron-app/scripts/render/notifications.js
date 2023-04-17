@@ -16,7 +16,7 @@ function pageLoaded(){
 
 function addHtml(notification){
     let toReturn = "";
-    let colour = "Tomato";
+    let colour = "";
     if (notification.Read) {colour = notificationReadColour; } else { colour = notificationNotReadColour; }
     //notification += "<h2>" + notification.Title + "</h2>"
     toReturn += '<p style="color:' + colour + ';">' + notification.Contents + "</p>"
