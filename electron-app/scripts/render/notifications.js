@@ -8,13 +8,13 @@ function pageLoaded(){
     //Hard coding the notifications into the code, we will get this from sql at some point but for now...
     let notif = "<div class = \"content\">"; 
     for (var i = 0; i < notifcations.length; i++){
-        notif += addHtml(notifcations[i], i);
+        notif += returnHtmlSetupForNotification(notifcations[i], i);
     }
 
     notificationsParagraph.innerHTML = notif;
 }
 
-function addHtml(notification, index){
+function returnHtmlSetupForNotification(notification, index){
     let toReturn = "";
     let colour = "";
     if (notification.Read) {colour = notificationReadColour; } else { colour = notificationNotReadColour; }
