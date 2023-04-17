@@ -1,3 +1,15 @@
+body {
+    background-color: white;
+    color: black;
+    font-size: 14px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -106,5 +118,4 @@
     color: #f77062;
     transition: all 0.3s ease;
 }
-
 
