@@ -1,3 +1,5 @@
+const {	ipcRenderer } = require('electron') 
+
 // Store elements
 const signupBtn = document.getElementById('signup-btn')
 const emailInput = document.getElementById('email-input')
@@ -23,8 +25,7 @@ signupBtn.addEventListener('click', async () => {
     var results = validateInputs()
     if(results == ALL_GOOD){
 	let userData = [emailInput.value, nameInput.value, passInput.value]
-	var resp = await window.electronAPI.signup(userData)
-	console.log(resp)
+	var resp = await ipcRenderer.invoke('account:signup', userData)
     }
     else{
 	// TODO Change how we display an invalid input to the user

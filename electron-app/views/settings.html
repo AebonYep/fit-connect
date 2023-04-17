@@ -5,7 +5,7 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-    <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" >
     <title>Fit Connect</title>
   </head>
   <body>
@@ -41,33 +41,17 @@
               Log out
             </a>
           </li>
-
+          <li class = "navbar__button">
+            <a id="switch" class="button">Switch Theme</a>
+    
+          </li>
         </ul>
       </div>
     </nav>
 
-    <!-- dark mode stuff -->
-    <hr> <br>
-    <h1 style="text-align:center;">
-      Dark Mode
-    </h1> <br>
-    
-    <p style="text-align:center;">
-      <button onclick="myFunction()">ON/OFF</button> 
-      <!--<button type="button" onclick="alert('Hello world!')">Toggle dark mode</button> -->
-    </p>
-    
-    <script>
-    function myFunction() {
-       var element = document.body;
-       element.classList.toggle("dark-mode");
-    }
-    </script>
-    
-    <!-- dark mode stuff ends not working -->
-    <!-- new username -->
+  
 
-    <br> <hr> <br>
+    
 
     <h1 >Change Username</h1> <br>
   
@@ -93,7 +77,7 @@
       </form>
 
     <!-- You can also require other files to run in this process -->
-    <script defer src="./renderer.js"></script>
+    <script defer src="../scripts/render/settings.js"></script>
   </body>
 
   
