@@ -1,13 +1,3 @@
-body {
-    background-color: white;
-    color: black;
-    font-size: 14px;
-  }
-  
-  .dark-mode {
-    background-color: black;
-    color: white;
-  }
 
 
 *{
@@ -118,4 +108,56 @@ body {
     color: #f77062;
     transition: all 0.3s ease;
 }
+
+body{
+    background: lightgrey;
+    color: white;
+    font-family: 'Kumbh Sans',sans-serif;
+}
+
+form{
+    width: 360px;
+    height: 300px;
+    margin: auto;
+    background-color: lightgrey;
+    border-radius: 3px;
+    border: none;
+}
+form label{
+    color: white;
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+
+}
+
+form input{
+    width: 100%;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 6px;
+    outline: none;
+
+}
+
+button{
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #f77062;
+    color: white;
+    font-size: 18px;
+}
+
+button:hover {
+    background: #4837ff;
+    transition: all 0.3s ease;
+
+}
+
+h1{
+    text-align: center;
+}
+
 

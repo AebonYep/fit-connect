@@ -32,9 +32,16 @@ form label{
 
 }
 
+h1{
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 44px;
+}
+
 form input{
     width: 100%;
-    padding: 7px;
+    padding: 5px;
     border: 1px solid black;
     border-radius: 6px;
     outline: none;
