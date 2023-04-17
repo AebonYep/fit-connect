@@ -160,4 +160,11 @@ h1{
     text-align: center;
 }
 
-
+.profile {
+    width: 360px;
+    height: 300px;
+    margin: auto;
+    background-color: grey;
+    border-radius: 3px;
+    border: none;
+}
