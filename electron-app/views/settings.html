@@ -47,36 +47,51 @@
     </nav>
 
     <!-- dark mode stuff -->
-
+    <hr> <br>
+    <h1 style="text-align:center;">
+      Dark Mode
+    </h1> <br>
+    
+    <p style="text-align:center;"> 
+      <button onclick="myFunction()">ON/OFF</button> 
+      <!--<button type="button" onclick="alert('Hello world!')">Toggle dark mode</button> -->
+    </p>
+    
+    <script>
+    function myFunction() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+    }
+    </script>
     
     <!-- dark mode stuff ends not working -->
     <!-- new username -->
 
     <br> <hr> <br>
 
-    <h1 style="text-align:center;">Change Username</h1> <br>
-    <p>
-      <form1>
+    <h1 >Change Username</h1> <br>
+  
+      <form >
         <label for="name-input">New Username:</label>
 				<input type="text" id="name-input" placeholder="User Name" required><br>
         <label for="password">Enter Password:</label>
 				<input type="password" id="password" placeholder="Password" required><br>
         <br> <button id="change-btn">Change Username</button>
-      </form1>
-    </p>
+      </form>
+
 
     <br> <hr> <br>
 
-    <h1 style="text-align:center;">Delete Account</h1> <br>
-    <p>
-      <form2>
+    <h1 >Delete Account</h1> <br>
+  
+      <form>
         <label for="username">Username:</label>
 				<input type="text" id="username" placeholder="User Name" required><br>
         <label for="password">Password:&nbsp</label>
 				<input type="password" id="password" placeholder="Password" required><br>
         <br> <button id="change-btn">Delete</button>
-      </form2>
-    </p>
+      </form>
+
     <!-- You can also require other files to run in this process -->
     <script defer src="./renderer.js"></script>
   </body>
