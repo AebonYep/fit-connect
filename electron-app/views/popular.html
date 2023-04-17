@@ -1,55 +1,62 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-    <link href="./styles.css" rel="stylesheet">
-    <title>Fit Connect</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="navbar__container">
-        <a href="popular.html" id="navbar__main">
-          Feed
-        </a>
-        
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="profile.html" class="navbar__links">
-              Profile
-            </a>
-          </li>
-          <li class="navbar__item">
-            <a href="notifications.html" class="navbar__links">
-              Notifications
-            </a>
-          </li>
-          <li class="navbar__item">
-            <a href="messages.html" class="navbar__links">
-              Messages
-            </a>
-          </li>
-          <li class="navbar__item">
-            <a href="settings.html" class="navbar__links">
-              Settings
-            </a>
-          </li>
-          <li class= "navbar__button">
-            <a href="index.html" class="button">
-              Log out
-            </a>
-          </li>
 
-        </ul>
-      </div>
-    </nav>
-    
-    
-    
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link href="./styles.css" rel="stylesheet">
+  <title>Fit Connect</title>
+</head>
 
-    <!-- You can also require other files to run in this process -->
-    <script defer src="./renderer.js"></script>
-  </body> 
+<body>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="popular.html" id="navbar__main">
+        Feed
+      </a>
+
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="profile.html" class="navbar__links">
+            Profile
+          </a>
+        </li>
+        <li class="navbar__item">
+          <a href="notifications.html" class="navbar__links">
+            Notifications
+          </a>
+        </li>
+        <li class="navbar__item">
+          <a href="messages.html" class="navbar__links">
+            Messages
+          </a>
+        </li>
+        <li class="navbar__item">
+          <a href="settings.html" class="navbar__links">
+            Settings
+          </a>
+        </li>
+        <li class="navbar__button">
+          <a href="index.html" class="button">
+            Log out
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <p id="posts"></p>
+
+
+
+
+  <!-- You can also require other files to run in this process -->
+  <script defer src="./renderer.js"></script>
+  <script defer src="../scripts/render/popular.js"></script>
+</body>
+
 </html>
