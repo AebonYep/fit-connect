@@ -18,7 +18,7 @@ function returnHtmlSetupForNotification(notification, index){
     let toReturn = "";
     let colour = "";
     if (notification.Read) {colour = notificationReadColour; } else { colour = notificationNotReadColour; }
-    toReturn += "<h2> Notification " + (index + 1) + "</h2>"
+    toReturn += "<p><b> Notification " + (index + 1) + "</b></p>" //this will say something like 'X has liked your post!' in the future but for now this
     toReturn += '<p style="color:' + colour + ';">' + notification.Contents + "</p>"
     return toReturn;
 }
