@@ -19,7 +19,8 @@ function simpleGet(query, callback){
 
 router.get('/', (req, res) => {
 
-    let getPostsQuery = `SELECT name, content, date FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id`
+    //let getPostsQuery = `SELECT name, content, date FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id`
+    let getPostsQuery = `SELECT title, content, tags FROM user_posts`
 
     simpleGet(getPostsQuery, (result) => {
 	res.send(result)

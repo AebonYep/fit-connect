@@ -4,7 +4,7 @@ var posts;
 
 async function grabdata() {
    let text = "";
-   const response = await fetch("http://lxfarm08.csc.liv.ac.uk:3000/posts");
+   const response = await fetch("http://localhost:3000/posts");
    const jsonData = await response.json();
    text += "<div class = \"content\">"
    for (var i = 0; i<jsonData.length; i++) {

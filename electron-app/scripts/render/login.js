@@ -5,7 +5,6 @@ const loginBtn = document.getElementById('login-btn')
 
 
 loginBtn.addEventListener('click', async () => {
-    console.log('beans')
 
     let jsonData = {
 	email: emailInput.value, 
@@ -21,15 +20,15 @@ loginBtn.addEventListener('click', async () => {
     })
 
     console.log(response)
-    // Account created
+    // Account signed in
     if(response.status === 200){
 	let jsonData = await response.json()
 	localStorage.setItem("userID", jsonData.userID)
 	window.location.href="../views/profile.html"
     }
     // Email already exists
-    if(response.status === 409){
-	alert("account already exists")
+    if(response.status === 401){
+	alert("incorrect password")
     }
 
 })
