@@ -172,51 +172,43 @@ h1{
     text-align: center;
 }
 
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-  }
   
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-  
-  #profile-pic {
-    float: left;
-    margin-right: 20px;
-    /* If you want to crop the image to a certain size, use something like this */
-    object-fit: cover;
-    width: 100px;
-    height: 100px;
-  }
+ .post__container{
+    
+        width: 600px;
+        height: 300px;
+        margin: auto;
+        background-color: grey;
+        border-radius: 10px;
+        border: black;
+        text-align: center;
+        color: white;
+ }
 
-  #imageUpload
-  {
-      display: none;
-  }
-  
-  #profileImage
-  {
-      cursor: pointer;
-  }
-  
-  #profile-container {
-      width: 150px;
-      height: 150px;
-      overflow: hidden;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-      border-radius: 50%;
-  }
-  
-  #profile-container img {
-      width: 150px;
-      height: 150px;
-  }
+ .profile__container{
+    
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    background-color: grey;
+    border-radius: 10px;
+    border: black;
+    text-align: center;
+    color: white;
+    align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
