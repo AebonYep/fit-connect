@@ -1,5 +1,3 @@
-const {	ipcRenderer } = require('electron') 
-
 // Store elements
 const signupBtn = document.getElementById('signup-btn')
 const emailInput = document.getElementById('email-input')
@@ -20,12 +18,36 @@ const INVALID_EMAIL        = 'Invalid Email'
 const INVALID_PASSWORD     = 'Invalid Password'
 const PASSWORDS_DONT_MATCH = 'Passwords dont match'
 
+
 // Send data to main process on button click
-signupBtn.addEventListener('click', async () => {
+signupBtn.addEventListener('click', async (event) => {
+    event.preventDefault()
     var results = validateInputs()
     if(results == ALL_GOOD){
-	let userData = [emailInput.value, nameInput.value, passInput.value]
-	var resp = await ipcRenderer.invoke('account:signup', userData)
+	let jsonData = {
+	    email: emailInput.value, 
+	    name: nameInput.value,
+	    password: passInput.value
+	}
+	let response = await fetch("http://localhost:3000/users/signup", {
+	    method: "POST",
+	    mode: "cors",
+	    headers: {
+		"Content-Type": "application/json"
+	    },
+	    body: JSON.stringify(jsonData)
+	})
+
+	// Account created
+	if(response.status === 200){
+	    let jsonData = await response.json()
+	    localStorage.setItem("userID", jsonData.id)
+	    window.location.href="../views/profile.html"
+	}
+	// Email already exists
+	if(response.status === 409){
+	    alert("account already exists")
+	}
     }
     else{
 	// TODO Change how we display an invalid input to the user

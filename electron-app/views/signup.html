@@ -3,27 +3,26 @@
     <head>
 	<meta charset="UTF-8">
 	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
 	<link href="./signupStyles.css" rel="stylesheet">
 	<title>Sign Up</title>
     </head>
     <body>
 	<h3><a href="index.html">Back</a></h3>
 	<h1>Fit-connect</h1>
-		<div class="signup__box">
-			<h1>Sign Up</h1>
-			<form>
-				<label for="email-input">Email:</label>
-	    		<input type="email" id="email-input" placeholder="Email" required><br>
-				<label for="name-input">Username:</label>
-				<input type="text" id="name-input" placeholder="User Name" required><br>
-				<label for="pass-input">Password:</label>
-				<input type="password" id="pass-input" placeholder="Password" required><br>
-				<label for="v-pass-input">Confirm password:</label>
-				<input type="password" id="v-pass-input" placeholder="Confirm Password" required><br>
-	    		<button id="signup-btn">Sign Up!</button>
-			</form>
-		</div>
+	<div class="signup__box">
+	    <form>
+	    <h1>Sign Up</h1>
+	    <label for="email-input">Email:</label>
+	    <input type="email" id="email-input" placeholder="Email" required><br>
+	    <label for="name-input">Username:</label>
+	    <input type="text" id="name-input" placeholder="User Name" required><br>
+	    <label for="pass-input">Password:</label>
+	    <input type="password" id="pass-input" placeholder="Password" required><br>
+	    <label for="v-pass-input">Confirm password:</label>
+	    <input type="password" id="v-pass-input" placeholder="Confirm Password" required><br>
+	    <button id="signup-btn">Sign Up!</button>
+	    </form>
+	</div>
 
 	<script src="../scripts/render/signup.js"></script>
     </body>

@@ -2,10 +2,11 @@ window.onload = pageLoaded;
 const notificationsParagraph = document.getElementById('notifications')
 const notificationReadColour = "DodgerBlue";
 const notificationNotReadColour = "Tomato;"
+
 function pageLoaded(){
     console.log("page loaded.");
-    const notifcations = [{"Type":"normal", "Contents":"Notification read test", "Read":true},{"Type":"normal", "Contents":"Notification not read test", "Read":false}];
-    //Hard coding the notifications into the code, we will get this from sql at some point but for now...
+    const notifcations = grabdata();
+    return;
     let notif = "<div class = \"content\">"; 
     for (var i = 0; i < notifcations.length; i++){
         notif += returnHtmlSetupForNotification(notifcations[i], i);
@@ -13,6 +14,13 @@ function pageLoaded(){
 
     notificationsParagraph.innerHTML = notif;
 }
+
+async function grabdata() {
+    let text = "";
+    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:3000/posts");
+    const jsonData = await response.json();
+    return jsonData;
+ }
 
 function returnHtmlSetupForNotification(notification, index){
     let toReturn = "";
