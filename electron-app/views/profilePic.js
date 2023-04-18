@@ -1,3 +1,9 @@
+function test(){
+
+    alert("test")
+    
+    }
+
 $("#profileImage").click(function(e) {
     $("#imageUpload").click();
 });
@@ -13,8 +19,3 @@ $("#imageUpload").change(function(){
     fasterPreview( this );
 });
 
-function test(){
-
-alert("test")
-
-}
