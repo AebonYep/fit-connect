@@ -18,8 +18,10 @@ const INVALID_EMAIL        = 'Invalid Email'
 const INVALID_PASSWORD     = 'Invalid Password'
 const PASSWORDS_DONT_MATCH = 'Passwords dont match'
 
+
 // Send data to main process on button click
-signupBtn.addEventListener('click', async () => {
+signupBtn.addEventListener('click', async (event) => {
+    event.preventDefault()
     var results = validateInputs()
     if(results == ALL_GOOD){
 	let jsonData = {
@@ -45,7 +47,6 @@ signupBtn.addEventListener('click', async () => {
 	// Email already exists
 	if(response.status === 409){
 	    alert("account already exists")
-
 	}
     }
     else{

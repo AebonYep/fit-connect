@@ -4,7 +4,9 @@ const passInput = document.getElementById('password-input')
 const loginBtn = document.getElementById('login-btn')
 
 
-loginBtn.addEventListener('click', async () => {
+loginBtn.addEventListener('click', async (event) => {
+
+    event.preventDefault();
 
     let jsonData = {
 	email: emailInput.value, 
