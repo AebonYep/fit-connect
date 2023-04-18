@@ -52,26 +52,19 @@
         </div>
       </nav>
           
-      <div class="profile__container">
-        <div class =profImg__box>
-          <img src="Images/placeholder-image.jpg" alt="exampleProf">
-        </div>
-      </form>
+      <img src="Images/placeholder-image.jpg" alt="profile_pic" class="profile_pic">
+      <div class = profile>
+        <h1>Username</h1>
+        <div contenteditable="true" class = "profile_bio"> Bio </div>
+      </div>
+
 
       <button onclick="hello()">Hello</button>
 
-      <script>
-        function hello() {
-          alert('Hello');
-        }
-      </script>
-        <p id="profile"></p>
-    </div>
       
 
     <!-- You can also require other files to run in this process -->
-    <script defer src="./renderer.js"></script>
-    <script defer src="./profilePic.js"></script>
+    <script defer src="../scripts/render/profilePic.js"></script>
 
   </body>
 </html>
