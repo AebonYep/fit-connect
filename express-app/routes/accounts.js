@@ -17,7 +17,7 @@ function simpleGet(query, callback){
 }
 
 router.get('/', (req, res) => {
-    
+
     let getUsersQuery = `SELECT id, name, bio, goals FROM user_accounts`
 
     simpleGet(getUsersQuery, (result) => {
@@ -35,10 +35,10 @@ router.get('/name=:userName', (req, res) => {
 
 router.get('/id=:userID', (req, res) => {
     let { userID } = req.params
-    
+
     let getUserQuery = `SELECT name, bio, goals FROM user_accounts WHERE id='${userID}'` 
-    
-    
+
+
     simpleGet(getUserQuery, (result) => {
 	res.send(result)
     })
@@ -143,9 +143,10 @@ router.post('/signup', (req, res) => {
 })
 
 // Request to follow user
-router.post('/id=:userID/follow/id=:followingID', (req, res) => {
-    let {userID, followingID} = req.params
-    
+router.post('/follow', (req, res) => {
+    let userID = req.body.userID
+    let followingID = req.body.followingID
+
     let addFollowerQuery = `INSERT INTO user_followers (user_id, following_id) VALUES (${userID},${followingID})`
     con.query(addFollowerQuery, (err, result) => {
 	if (err){
@@ -159,8 +160,8 @@ router.post('/id=:userID/follow/id=:followingID', (req, res) => {
 })
 
 // Request to add bio
-router.post('/id=:userID/bio', (req, res) => {
-    let { userID } = req.params
+router.post('/bio', (req, res) => {
+    let userID = req.body.userID
     let bioContent = req.body.content
 
     let addBioQuery = `UPDATE user_accounts SET bio='${bioContent}' WHERE id=${userID}`
@@ -168,6 +169,41 @@ router.post('/id=:userID/bio', (req, res) => {
     con.query(addBioQuery, (err, result) => {
 	if (err) throw err
 	res.sendStatus(200)
+    })
+})
+
+router.post('/delete', (req, res) => {
+    let userID = req.body.userID
+    let password = req.body.password
+
+    let checkAccountQuery = `SELECT * FROM user_accounts WHERE id=${userID}`
+    con.query(checkAccountQuery, (err, result) => {
+	if (err){ 
+	    res.sendStatus(500)
+	    throw err
+	}
+	if(result.length > 0){
+	    console.log(result[0].email)
+	    console.log(result[0].password)
+
+	    if(password === result[0].password){
+		let deleteAccountQuery = `DELETE FROM user_accounts WHERE id=${userID}`
+		con.query(deleteAccountQuery), (err) => {
+		    if (err){ 
+			res.sendStatus(500)
+			throw err
+		    }
+		    res.send(200)
+		})
+	    }
+	    else{
+		res.sendStatus(401)
+	    }
+	}
+	else{
+	    res.sendStatus(404)
+	}
+
     })
 })
 
