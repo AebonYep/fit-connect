@@ -22,8 +22,31 @@ const PASSWORDS_DONT_MATCH = 'Passwords dont match'
 signupBtn.addEventListener('click', async () => {
     var results = validateInputs()
     if(results == ALL_GOOD){
-	let userData = [emailInput.value, nameInput.value, passInput.value]
-	// TODO add fetch api to send data to express app
+	let jsonData = {
+	    email: emailInput.value, 
+	    name: nameInput.value,
+	    password: passInput.value
+	}
+	let response = await fetch("http://localhost:3000/users/signup", {
+	    method: "POST",
+	    mode: "cors",
+	    headers: {
+		"Content-Type": "application/json"
+	    },
+	    body: JSON.stringify(jsonData)
+	})
+
+	// Account created
+	if(response.status === 200){
+	    let jsonData = await response.json()
+	    localStorage.setItem("userID", jsonData.id)
+	    window.location.href="../views/profile.html"
+	}
+	// Email already exists
+	if(response.status === 409){
+	    alert("account already exists")
+
+	}
     }
     else{
 	// TODO Change how we display an invalid input to the user
