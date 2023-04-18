@@ -1,3 +1,7 @@
+function hello() {
+  alert('Hello');
+}
+
 var profile = {
     "UserID":1,
     "Bio": "Example bio", 
