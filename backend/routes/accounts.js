@@ -188,7 +188,7 @@ router.post('/delete', (req, res) => {
 
 	    if(password === result[0].password){
 		let deleteAccountQuery = `DELETE FROM user_accounts WHERE id=${userID}`
-		con.query(deleteAccountQuery), (err) => {
+		con.query(deleteAccountQuery, (err) => {
 		    if (err){ 
 			res.sendStatus(500)
 			throw err
