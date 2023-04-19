@@ -1,30 +1,34 @@
 const switchThemeButton = document.getElementById('switch')
 
 switchThemeButton.addEventListener('click', () => {
-    switchTheme()
-    let theme = localStorage.getItem("currentTheme")
-    if(theme === "light"){
-	localStorage.setItem("currentTheme", "dark")
+    let theme = localStorage.getItem("theme")
+
+    if (theme === "dark") {
+        localStorage.setItem("theme", "light")
+        document.getElementById('style-sheet').setAttribute('href', '../styles/lightStyles.css')
     }
-    if(theme === "dark"){
-	localStorage.setItem("currentTheme", "light")
+    else if (theme === "light") {
+        localStorage.setItem("theme", "dark")
+        document.getElementById('style-sheet').setAttribute('href', '../styles/darkStyles.css')
     }
+    console.log(localStorage.getItem("theme"))
+
 })
 
-function switchTheme(){
 
-    let theme = localStorage.getItem("currentTheme")
-    console.log(theme)
-
-    if(theme == null){
-	theme = "light"
+function setTheme() {
+    if (localStorage.getItem("themeLoaded") == null) {
+        localStorage.setItem("theme", "light")
+        localStorage.setItem("themeLoaded", true)
     }
-    if(theme === "dark"){
-	document.getElementById('style-sheet').setAttribute('href', 'darkStyles.css')	
+    else if (localStorage.getItem("theme") === "dark") {
+        console.log("dark")
+        document.getElementById('style-sheet').setAttribute('href', '../styles/darkStyles.css')
     }
-    if(theme === "light"){
-	document.getElementById('style-sheet').setAttribute('href', 'lightStyles.css')	
+    else if (localStorage.getItem("theme") === "light") {
+        console.log("light")
+        document.getElementById('style-sheet').setAttribute('href', '../styles/lightStyles.css')
     }
 }
 
-window.onload = switchTheme
+window.onload = setTheme
