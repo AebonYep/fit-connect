@@ -19,7 +19,7 @@ function simpleGet(query, callback) {
 
 router.get('/', (req, res) => {
 
-	let getPostsQuery = `SELECT name, title, content, tags, type, date, user_id FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id ORDER BY user_posts.id DESC`
+	let getPostsQuery = `SELECT name, title, content, tags, type, date, user_id, user_posts.id FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id ORDER BY user_posts.id DESC`
 	// let getPostsQuery = `SELECT title, content, tags, type, date FROM user_posts`
 
 	simpleGet(getPostsQuery, (result) => {
@@ -60,6 +60,18 @@ router.post('/create', (req, res) => {
 
 })
 
+router.post('/like', (req, res) => {
+	let postID = req.body.postID
+	let likePostQuery = `UPDATE user_posts SET likes=likes+1 WHERE id=${postID}`
+	con.query(likePostQuery, (err, result) => {
+		if (err) {
+			res.sendStatus(500)
+			throw err
+		}
+		res.send(200)
+	})
+
+})
 
 
 module.exports = router;
