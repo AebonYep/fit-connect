@@ -4,7 +4,8 @@ var posts;
 
 async function grabdata() {
    let text = "";
-   const response = await fetch("http://localhost:3000/posts");
+   // CHANGE LINK TO VARIABLE THAT IS GLOBAL IN CODEBASE
+   const response = await fetch("http://lxfarm08.csc.liv.ac.uk:3000/posts");
    const jsonData = await response.json();
    text += "<div class = \"content\">"
    for (var i = 0; i<jsonData.length; i++) {
@@ -19,6 +20,7 @@ async function grabdata() {
 
 function func(post) {
    let text = ""
+   if(post.type == "text"){
    text += "<h2>" + post.title + "</h2>"
    /*text += "<img src="+ Images/example01.jpg +"> </img>" 
    something similar to this should work*/
@@ -26,6 +28,14 @@ function func(post) {
    text += "<small>" + post.tags + "</small>"
    //text += "<br>" + "<small>" + post.UserID + "</small>"
    text += "<br><br>"
+   }
+   else if (post.type == "image"){
+      text += "<h2>" + post.title + "</h2>"
+   text += "<img src="+ post.content +"> </img>" 
+   text += "<small>" + post.tags + "</small>"
+   //text += "<br>" + "<small>" + post.UserID + "</small>"
+   text += "<br><br>"
+   }
    return text
 }
 let textresult = grabdata()
