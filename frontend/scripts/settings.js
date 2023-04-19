@@ -1,8 +1,12 @@
 const deletePasswordInput = document.getElementById('delete-password-input')
 const deleteAccountBtn = document.getElementById('delete-account-btn')
 
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
 deleteAccountBtn.addEventListener('click', async (event) => {
 	event.preventDefault()
+	console.log(address)
 	console.log("account delete button pressed")
 
 	let jsonData = {
@@ -10,7 +14,7 @@ deleteAccountBtn.addEventListener('click', async (event) => {
 		password: deletePasswordInput.value
 	}
 
-	let response = await fetch("http://localhost:3000/users/delete", {
+	let response = await fetch(`${address}:${port}/users/delete`, {
 		method: "POST",
 		mode: "cors",
 		headers: {

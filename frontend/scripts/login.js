@@ -1,3 +1,6 @@
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
 // Store elements
 const emailInput = document.getElementById('email-input')
 const passInput = document.getElementById('password-input')
@@ -12,7 +15,7 @@ loginBtn.addEventListener('click', async (event) => {
 	email: emailInput.value, 
 	password: passInput.value
     }
-    let response = await fetch("http://localhost:3000/users/login", {
+    let response = await fetch(`${address}:${port}/users/login`, {
 	method: "POST",
 	mode: "cors",
 	headers: {
