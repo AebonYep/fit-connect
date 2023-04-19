@@ -9,7 +9,7 @@ createPostBtn.addEventListener('click', async (event) => {
     event.preventDefault()
 
     let jsonData = {
-        userID: 1,
+        userID: localStorage.getItem("userID"),
         title: titleInput.value,
         content: contentInput.value,
         type: "text"
@@ -24,5 +24,8 @@ createPostBtn.addEventListener('click', async (event) => {
         body: JSON.stringify(jsonData)
     })
     
+    if(response.status === 200){
+        window.location.href = "../views/popular.html"
+    }
 
 })

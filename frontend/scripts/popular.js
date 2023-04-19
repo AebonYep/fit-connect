@@ -1,9 +1,9 @@
 const address = localStorage.getItem("address")
 const port = localStorage.getItem("port")
 
-var posts;
 
-async function grabdata() {
+
+async function grabPosts() {
     let text = "";
 
     // Get posts
@@ -23,12 +23,42 @@ async function grabdata() {
     return text
 }
 
+async function followClicked(followID){
+
+    let jsonData = {
+        userID: localStorage.getItem("userID"),
+        followingID: followID
+
+    }
+
+    let response = await fetch(`${address}:${port}/users/follow`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+    })
+
+    if(response.status === 200){
+        alert("followed")
+    }
+    else if(response.status === 400){
+        alert("cannot follow yourself")
+    }
+    else if(response.status === 409){
+        alert("you already follow this user")
+    }
+
+    console.log(response.status)
+}
 
 
 function formatPost(post) {
     let text = ""
     if (post.type == "text") {
 
+        text += `<button id='follow-btn' onclick='followClicked(${post.user_id})'> Follow ${post.name} </button>`
         text += "<h2>" + post.title + "</h2>"
 
         text += "<p>" + post.content + "</p>"
@@ -45,5 +75,11 @@ function formatPost(post) {
     }
     return text
 }
-let textresult = grabdata()
-document.getElementById("posts").innerHTML = textresult;
+
+
+function entryPoint(){
+    document.getElementById("posts").innerHTML =  grabPosts();
+
+}
+
+window.onload = entryPoint

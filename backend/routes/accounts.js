@@ -48,7 +48,7 @@ router.get('/id=:userID', (req, res) => {
 router.get('/id=:userID/following', (req, res) => {
 	let { userID } = req.params
 
-	let getFollowersQuery = `SELECT id, name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.following_id WHERE user_id=${userID}`
+	let getFollowersQuery = `SELECT name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.following_id WHERE user_id=${userID}`
 
 	simpleGet(getFollowersQuery, (result) => {
 		res.send(result)
@@ -57,10 +57,10 @@ router.get('/id=:userID/following', (req, res) => {
 })
 
 
-router.get('/id=:userID/following', (req, res) => {
+router.get('/id=:userID/followers', (req, res) => {
 	let { userID } = req.params
 
-	let getFollowersQuery = `SELECT id, name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.following_id WHERE following_id=${userID}`
+	let getFollowersQuery = `SELECT name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.user_id WHERE following_id=${userID}`
 
 	simpleGet(getFollowersQuery, (result) => {
 		res.send(result)
@@ -159,15 +159,33 @@ router.post('/follow', (req, res) => {
 	let userID = req.body.userID
 	let followingID = req.body.followingID
 
-	let addFollowerQuery = `INSERT INTO user_followers (user_id, following_id) VALUES (${userID},${followingID})`
-	con.query(addFollowerQuery, (err, result) => {
-		if (err) {
-			res.sendStatus(500)
-			throw err
-		}
-		res.send(200)
+	if (userID != followingID) {
+		let checkFollowerQuery = `SELECT * FROM user_followers WHERE user_id='${userID}' OR following_id='${followingID}'`
+		con.query(checkFollowerQuery, (err, result) => {
+			if (err) {
+				res.sendStatus(500)
+				throw err
+			}
+			if (result.length == 0) {
+				let addFollowerQuery = `INSERT INTO user_followers (user_id, following_id) VALUES (${userID},${followingID})`
+				con.query(addFollowerQuery, (err, result) => {
+					if (err) {
+						res.sendStatus(500)
+						throw err
+					}
+					res.send(200)
 
-	})
+				})
+			}
+			else{
+				res.send(409)
+			}
+		})
+
+	}
+	else {
+		res.send(400)
+	}
 
 })
 
@@ -204,7 +222,7 @@ router.post('/change-username', (req, res) => {
 						res.sendStatus(500)
 						throw err
 					}
-					if(result.length === 0){
+					if (result.length === 0) {
 						let changeNameQuery = `UPDATE user_accounts SET name='${newName}' WHERE id=${userID}`
 						con.query(changeNameQuery, (err) => {
 							if (err) {
@@ -214,15 +232,15 @@ router.post('/change-username', (req, res) => {
 							res.send(200)
 						})
 					}
-					else{
+					else {
 						res.send(409)
 					}
 				})
 			}
-			else{
+			else {
 				res.send(401)
 			}
-			
+
 		}
 		else {
 			res.sendStatus(404)
