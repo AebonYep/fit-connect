@@ -49,7 +49,7 @@ signupBtn.addEventListener('click', async (event) => {
 	}
 	// Email already exists
 	if(response.status === 409){
-	    alert("account already exists")
+	    alert("email or username already exists")
 	}
     }
     else{

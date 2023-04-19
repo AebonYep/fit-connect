@@ -1,9 +1,12 @@
 const usernameLabel = document.getElementById('username')
 const bioLabel = document.getElementById('bio')
+const followingList = document.getElementById('following-list')
+const followersList = document.getElementById('followers-list')
 
-async function loadProfileData(userID){
 
-    console.log(userID)
+var userID
+
+async function loadProfileData(){
     // Get user data
     let response = await fetch(`http://localhost:3000/users/id=${userID}`)
     let jsonData = await response.json()
@@ -13,4 +16,48 @@ async function loadProfileData(userID){
 
 }
 
-window.onload = loadProfileData(localStorage.getItem("userID"))
+async function loadFollowing(){
+    let innerHTML = "No-one :("
+    
+    let response = await fetch(`http://localhost:3000/users/id=${userID}/following`)
+
+    console.log(response.status)
+    if(response.status === 200){
+        let jsonData = await response.json()
+
+        innerHTML = ""
+        for(let i = 0; i < jsonData.length; i++){
+            innerHTML += `<li>${jsonData[0].name}</li>`
+        }   
+    }
+    followingList.innerHTML = innerHTML
+}
+
+async function loadFollowers(){
+    let innerHTML = "No-one :("
+    
+    let response = await fetch(`http://localhost:3000/users/id=${userID}/followers`)
+
+    console.log(response.status)
+    if(response.status === 200){
+        let jsonData = await response.json()
+
+        innerHTML = ""
+        for(let i = 0; i < jsonData.length; i++){
+            innerHTML += `<li>${jsonData[0].name}</li>`
+        }   
+    }
+    followersList.innerHTML = innerHTML
+
+}
+
+function entryPoint(){
+    userID = localStorage.getItem("userID")
+
+    loadProfileData()
+    loadFollowing()
+    loadFollowers()
+
+}
+
+window.onload = entryPoint()

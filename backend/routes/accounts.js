@@ -45,10 +45,22 @@ router.get('/id=:userID', (req, res) => {
 
 })
 
-router.get('/id=:userID/followers', (req, res) => {
+router.get('/id=:userID/following', (req, res) => {
 	let { userID } = req.params
 
 	let getFollowersQuery = `SELECT id, name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.following_id WHERE user_id=${userID}`
+
+	simpleGet(getFollowersQuery, (result) => {
+		res.send(result)
+	})
+
+})
+
+
+router.get('/id=:userID/following', (req, res) => {
+	let { userID } = req.params
+
+	let getFollowersQuery = `SELECT id, name FROM user_accounts JOIN user_followers ON user_accounts.id = user_followers.following_id WHERE following_id=${userID}`
 
 	simpleGet(getFollowersQuery, (result) => {
 		res.send(result)
@@ -106,7 +118,7 @@ router.post('/signup', (req, res) => {
 	let password = req.body.password
 	let id = 0
 
-	let checkEmailQuery = `SELECT email FROM user_accounts WHERE email='${email}'`
+	let checkEmailQuery = `SELECT email FROM user_accounts WHERE email='${email}' OR name='${name}'`
 	let getIDQuery = `SELECT MAX(id) FROM user_accounts`
 
 	con.query(getIDQuery, (err, result) => {
@@ -177,6 +189,7 @@ router.post('/change-username', (req, res) => {
 	let newName = req.body.newName
 	let password = req.body.password
 
+	let checkNameQuery = `SELECT * FROM user_accounts WHERE name='${newName}'`
 	let checkAccountQuery = `SELECT * FROM user_accounts WHERE id=${userID}`
 	con.query(checkAccountQuery, (err, result) => {
 		if (err) {
@@ -186,18 +199,30 @@ router.post('/change-username', (req, res) => {
 		if (result.length > 0) {
 
 			if (password === result[0].password) {
-				let changeNameQuery = `UPDATE user_accounts SET name='${newName}' WHERE id=${userID}`
-				con.query(changeNameQuery, (err) => {
+				con.query(checkNameQuery, (err, result) => {
 					if (err) {
 						res.sendStatus(500)
 						throw err
 					}
-					res.send(200)
+					if(result.length === 0){
+						let changeNameQuery = `UPDATE user_accounts SET name='${newName}' WHERE id=${userID}`
+						con.query(changeNameQuery, (err) => {
+							if (err) {
+								res.sendStatus(500)
+								throw err
+							}
+							res.send(200)
+						})
+					}
+					else{
+						res.send(409)
+					}
 				})
 			}
-			else {
-				res.sendStatus(401)
+			else{
+				res.send(401)
 			}
+			
 		}
 		else {
 			res.sendStatus(404)

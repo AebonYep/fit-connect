@@ -24,10 +24,12 @@ deleteAccountBtn.addEventListener('click', async (event) => {
 		},
 		body: JSON.stringify(jsonData)
 	})
+	// Correct response
 	if(response.status === 200){
 		localStorage.setItem("userID", null)
 		window.location.href="../views/index.html"
 	}
+	// Invalid password
 	else if(response.status === 401){
 		alert("incorrect password")
 	}
@@ -52,11 +54,17 @@ changeNameBtn.addEventListener('click', async (event) => {
 		},
 		body: JSON.stringify(jsonData)
 	})
+	// Correct response
 	if(response.status === 200){
 		alert("name changed!")
 	}
+	// Invalid password
 	else if(response.status === 401){
 		alert("incorrect password")
+	}
+	// Username already in use
+	else if(response.status === 409){
+		alert("username already in use")
 	}
 
 })
