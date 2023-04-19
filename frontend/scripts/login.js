@@ -12,28 +12,28 @@ loginBtn.addEventListener('click', async (event) => {
     event.preventDefault();
 
     let jsonData = {
-	email: emailInput.value, 
-	password: passInput.value
+        email: emailInput.value,
+        password: passInput.value
     }
     let response = await fetch(`${address}:${port}/users/login`, {
-	method: "POST",
-	mode: "cors",
-	headers: {
-	    "Content-Type": "application/json"
-	},
-	body: JSON.stringify(jsonData)
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
     })
 
     console.log(response)
     // Account signed in
-    if(response.status === 200){
-	let jsonData = await response.json()
-	localStorage.setItem("userID", jsonData.userID)
-	window.location.href="../views/profile.html"
+    if (response.status === 200) {
+        let jsonData = await response.json()
+        localStorage.setItem("userID", jsonData.userID)
+        window.location.href = "../views/profile.html"
     }
     // Email already exists
-    if(response.status === 401){
-	alert("incorrect password")
+    if (response.status === 401) {
+        alert("incorrect password")
     }
 
 })
