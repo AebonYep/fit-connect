@@ -184,11 +184,9 @@ router.post('/change-username', (req, res) => {
 			throw err
 		}
 		if (result.length > 0) {
-			console.log(result[0].email)
-			console.log(result[0].password)
 
 			if (password === result[0].password) {
-				let changeNameQuery = `UPDATE user_accounts SET name=${newName} WHERE id=${userID}`
+				let changeNameQuery = `UPDATE user_accounts SET name='${newName}' WHERE id=${userID}`
 				con.query(changeNameQuery, (err) => {
 					if (err) {
 						res.sendStatus(500)
