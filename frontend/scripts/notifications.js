@@ -1,9 +1,12 @@
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
 window.onload = loadnotifs2();
 
 async function loadnotifs(){
     user = localStorage.getItem("userID")
     console.log("something random")
-    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
+    const response = await fetch(`${address}:${port}/messages`);
     
     text = ""
     console.log(response.status)
@@ -22,9 +25,9 @@ async function loadnotifs(){
         text+="<a href=\"../views/messages.html\">New Message from "+ jsonotherusernames[0].name+ "   received: " + jsonData[i].sent.slice(10, 19).replace('T', ' ') + "</a><br>"
     }
     //const responseUserFollowers = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/users/id=${user}/followers");
-    const responseUserFollowers = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/users/id=1");
+    const responseUserFollowers = await fetch(`${address}:${port}/users/id=1`);
     const jsonDataUserFollowers = await responseUserFollowers.json();
-    const allPosts = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/posts");
+    const allPosts = await fetch(`${address}:${port}/posts`);
     const allPostsJson = await allPosts.json();
 
     for (var i = 0; i < jsonDataUserFollowers.length; i++){
@@ -45,7 +48,7 @@ async function loadnotifs(){
 }
 
 async function getUser(user){
-    const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${user}`);
+    const otherusernames = await fetch(`${address}:${port}/users/id=${user}`);
     const jsonotherusernames = await otherusernames.json()
     return jsonotherusernames;
 }
@@ -54,7 +57,7 @@ async function loadnotifs2(){
 
     user = localStorage.getItem("userID")
     console.log("something random")
-    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
+    const response = await fetch(`${address}:${port}/messages`);
     text = ""
     console.log(response.status)
     const jsonData = await response.json();
@@ -69,7 +72,7 @@ async function loadnotifs2(){
     for(var i =0; i<jsonData.length; i++){
         try{
         otheruser = jsonData[i].sender_id
-        const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${otheruser}`);
+        const otherusernames = await fetch(`${address}:${port}/users/id=${otheruser}`);
         const jsonotherusernames = await otherusernames.json()
         text+="<a href=\"../views/messages.html\">New Message from "+ jsonotherusernames[0].name+ "   received: " + jsonData[i].sent.slice(10, 19).replace('T', ' ') + "</a><br>"
         }catch{

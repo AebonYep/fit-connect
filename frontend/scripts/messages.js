@@ -1,9 +1,12 @@
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
 const user = localStorage.getItem("userID"); //this needs to be updated to grab the current user
 const messagebutton = document.getElementById("messagebutton2")
 
 async function getdata() {
     console.log("something random")
-    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
+    const response = await fetch(`${address}:${port}/messages`);
     console.log(response.status)
     var jsonData = await response.json();
     console.log(jsonData)
@@ -34,7 +37,7 @@ async function getdata() {
     text = ""
     for(var i = 0; i < users.length; i++){
         try{
-        const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${users[i]}`);
+        const otherusernames = await fetch(`${address}:${port}/users/id=${users[i]}`);
         const jsonotherusernames = await otherusernames.json()
         //text += "<button onclick=loadmessagepage("+ users[i]+")>" + jsonotherusernames[0].name+ "</button> <br>"
         }catch{
@@ -63,7 +66,7 @@ async function loadmessagepage(otheruser){
 messagebutton.addEventListener('click', async (event) => {
     event.preventDefault()  
     message = document.getElementById("messagebutton").value
-    const otheruserids = await fetch(`http://lxfarm08:25565/users/name=${message}`);
+    const otheruserids = await fetch(`${address}:${port}/users/name=${message}`);
     const otheruseridsjson = await otheruserids.json()
     console.log(otheruseridsjson)
     const otheruserid = otheruseridsjson[0].id

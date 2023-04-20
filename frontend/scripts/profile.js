@@ -17,7 +17,7 @@ async function loadProfileData(){
     let jsonData = await response.json()
 
     usernameLabel.innerHTML = jsonData[0].name
-    bioLabel.innerHTML = jsonData[0].bio
+    bioLabel.innerHTML = jsonData[0].goals
 
 }
 

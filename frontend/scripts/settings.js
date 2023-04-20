@@ -144,8 +144,7 @@ async function entryPoint() {
 	let response = await fetch(`${address}:${port}/users/id=${userID}`)
 	let jsonData = await response.json()
 
-	console.log(jsonData[0].bio)
-	currentBioLabel.innerHTML = jsonData[0].bio
+	currentBioLabel.innerHTML = jsonData[0].goals
 
 	
 }

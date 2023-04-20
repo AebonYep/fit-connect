@@ -18,7 +18,7 @@ function simpleGet(query, callback) {
 
 router.get('/', (req, res) => {
 
-	let getUsersQuery = `SELECT id, name, bio, goals FROM user_accounts`
+	let getUsersQuery = `SELECT id, name, goals FROM user_accounts`
 
 	simpleGet(getUsersQuery, (result) => {
 		res.send(result)
@@ -36,7 +36,7 @@ router.get('/name=:userName', (req, res) => {
 router.get('/id=:userID', (req, res) => {
 	let { userID } = req.params
 
-	let getUserQuery = `SELECT name, bio, goals FROM user_accounts WHERE id='${userID}'`
+	let getUserQuery = `SELECT name, goals FROM user_accounts WHERE id='${userID}'`
 
 
 	simpleGet(getUserQuery, (result) => {
@@ -263,7 +263,7 @@ router.post('/change-bio', (req, res) => {
 		}
 		if (result.length > 0) {
 
-			let changeNameQuery = `UPDATE user_accounts SET bio='${newBio}' WHERE id=${userID}`
+			let changeNameQuery = `UPDATE user_accounts SET goals='${newBio}' WHERE id=${userID}`
 			con.query(changeNameQuery, (err) => {
 				if (err) {
 					res.sendStatus(500)
