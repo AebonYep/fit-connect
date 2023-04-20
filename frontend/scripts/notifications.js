@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 88df41c3ea8e2659d230babf19290b2e143bd6b4
 window.onload = loadnotifs();
 
 async function loadnotifs(){
