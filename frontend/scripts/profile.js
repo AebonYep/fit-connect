@@ -1,3 +1,6 @@
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
 const usernameLabel = document.getElementById('username')
 const bioLabel = document.getElementById('bio')
 const followingList = document.getElementById('following-list')
@@ -8,7 +11,7 @@ var userID
 
 async function loadProfileData(){
     // Get user data
-    let response = await fetch(`http://localhost:3000/users/id=${userID}`)
+    let response = await fetch(`${address}:${port}/users/id=${userID}`)
     let jsonData = await response.json()
 
     usernameLabel.innerHTML = jsonData[0].name
@@ -19,7 +22,7 @@ async function loadProfileData(){
 async function loadFollowing(){
     let innerHTML = "No-one :("
     
-    let response = await fetch(`http://localhost:3000/users/id=${userID}/following`)
+    let response = await fetch(`${address}:${port}/users/id=${userID}/following`)
 
     console.log(response.status)
     if(response.status === 200){
@@ -36,7 +39,7 @@ async function loadFollowing(){
 async function loadFollowers(){
     let innerHTML = "No-one :("
     
-    let response = await fetch(`http://localhost:3000/users/id=${userID}/followers`)
+    let response = await fetch(`${address}:${port}/users/id=${userID}/followers`)
 
     console.log(response.status)
     if(response.status === 200){
