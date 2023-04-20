@@ -205,13 +205,13 @@ h1{
   }
 
   table {
-    font-family: arial, sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
   
   td {
-    border: none;
+    border: 1px solid black;
     background-color: darkslategrey;
     text-align: center;
     padding: 8px;
