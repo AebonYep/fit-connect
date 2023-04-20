@@ -19,7 +19,7 @@ function simpleGet(query, callback) {
 
 router.get('/', (req, res) => {
 
-	let getPostsQuery = `SELECT name, title, content, tags, type, date, user_id, user_posts.id FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id ORDER BY user_posts.id DESC`
+	let getPostsQuery = `SELECT name, title, content, tags, user_accounts.type, date, user_id, user_posts.id FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id ORDER BY user_posts.id DESC`
 	// let getPostsQuery = `SELECT title, content, tags, type, date FROM user_posts`
 
 	simpleGet(getPostsQuery, (result) => {
@@ -71,6 +71,21 @@ router.post('/like', (req, res) => {
 		res.send(200)
 	})
 
+})
+
+router.post('/delete', (req, res) => {
+	let postID = req.body.postID
+
+	console.log(postID)
+	let deletePostsQuery = `DELETE FROM user_posts WHERE id=${postID}`
+	con.query(deletePostsQuery, (err) => {
+		if (err) {
+			res.sendStatus(500)
+			throw err
+		}
+		console.log(`Posts deleted`)
+		res.send(200)
+	})
 })
 
 

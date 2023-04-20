@@ -84,19 +84,20 @@ router.post('/login', (req, res) => {
 	let email = req.body.email;
 	let password = req.body.password;
 
-	let checkAccountQuery = `SELECT id, email, password FROM user_accounts WHERE email='${email}'`
+	let checkAccountQuery = `SELECT id, email, password, type FROM user_accounts WHERE email='${email}'`
 	con.query(checkAccountQuery, (err, result) => {
 		if (err) {
 			res.sendStatus(500)
 			throw err
 		}
 		if (result.length > 0) {
-			console.log(result[0].email)
-			console.log(result[0].password)
+			console.log("logged in")
 
 			if (password === result[0].password) {
 				let returnData = {
-					"userID": result[0].id
+					"userID": result[0].id,
+					"type": result[0].type
+
 				}
 				res.send(returnData)
 			}
@@ -117,6 +118,7 @@ router.post('/signup', (req, res) => {
 	let name = req.body.name
 	let password = req.body.password
 	let id = 0
+	let type = 'user'
 
 	let checkEmailQuery = `SELECT email FROM user_accounts WHERE email='${email}' OR name='${name}'`
 	let getIDQuery = `SELECT MAX(id) FROM user_accounts`
@@ -137,7 +139,7 @@ router.post('/signup', (req, res) => {
 			throw err
 		}
 		if (result.length == 0) {
-			let insertQuery = `INSERT INTO user_accounts (id, email, name, password) VALUES (${id}, '${email}','${name}','${password}')`
+			let insertQuery = `INSERT INTO user_accounts (id, email, name, password, type) VALUES (${id}, '${email}','${name}','${password}', '${type}')`
 			con.query(insertQuery, (err, result) => {
 				if (err) {
 					res.sendStatus(500)
@@ -181,7 +183,6 @@ router.post('/follow', (req, res) => {
 				res.send(409)
 			}
 		})
-
 	}
 	else {
 		res.send(400)
