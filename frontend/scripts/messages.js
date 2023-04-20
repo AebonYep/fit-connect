@@ -1,4 +1,4 @@
-const user = 1; //this needs to be updated to grab the current user
+const user = localStorage.getItem("userID"); //this needs to be updated to grab the current user
 const messagebutton = document.getElementById("messagebutton2")
 
 async function getdata() {
@@ -102,6 +102,6 @@ messagebutton.addEventListener('click', async (event) => {
 
 })
 
-textresult = "example text"
+textresult = "no messages"
 document.getElementById("message ui").innerHTML = textresult;
 window.onload = getdata()

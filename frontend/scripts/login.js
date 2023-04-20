@@ -11,6 +11,8 @@ loginBtn.addEventListener('click', async (event) => {
 
     event.preventDefault();
 
+    localStorage.setItem("admin", "false")
+
     let jsonData = {
         email: emailInput.value,
         password: passInput.value
@@ -28,7 +30,12 @@ loginBtn.addEventListener('click', async (event) => {
     // Account signed in
     if (response.status === 200) {
         let jsonData = await response.json()
+        console.log(jsonData)
         localStorage.setItem("userID", jsonData.userID)
+        if(jsonData.type === "admin"){
+            console.log("ok")
+            localStorage.setItem("admin", "true")
+        }
         window.location.href = "../views/profile.html"
     }
     // Email already exists

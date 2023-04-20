@@ -115,7 +115,7 @@ function formatPost(post) {
     text += "<h2>" + post.title + "</h2>"
 
     text += "<p>" + post.content + "</p>"
-    text += "<small>" + post.tags + "</small>"
+    // text += "<small>" + post.tags + "</small>"
     //text += "<br>" + "<small>" + post.UserID + "</small>"
 
 
@@ -125,7 +125,7 @@ function formatPost(post) {
 
 function entryPoint() {
     document.getElementById("posts").innerHTML = grabPosts();
-
+    
 }
 
 window.onload = entryPoint
