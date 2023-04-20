@@ -110,7 +110,7 @@ function formatPost(post) {
         text += `<button id='follow-btn' onclick='deletePost(${post.id})'>Delete Post</button>`
     }
     text += `<button id='follow-btn' onclick='followClicked(${post.user_id})'> Follow ${post.name} </button>`
-    text += `<button id='follow-btn' onclick='likeClicked(${post.id})'> Like </button>`
+    // text += `<button id='follow-btn' onclick='likeClicked(${post.id})'> Like </button>`
 
     text += "<h2>" + post.title + "</h2>"
 
@@ -125,7 +125,7 @@ function formatPost(post) {
 
 function entryPoint() {
     document.getElementById("posts").innerHTML = grabPosts();
-    
+
 }
 
 window.onload = entryPoint
