@@ -52,7 +52,7 @@ messagebutton.addEventListener('click', async (event) => {
     console.log(message)
 
     let jsonData = {
-        userid: 1,
+        userid: localStorage.getItem("userID"),
         otheruserid: localStorage.getItem("otheruserid"),
         content: message
     }
