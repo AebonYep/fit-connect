@@ -52,24 +52,33 @@
 	    </div>
 	</nav>
 
-	<img src="Images/placeholder-image.jpg" alt="profile_pic" class="profile_pic">
-	<div class = profile>
-	    <h1 id="username">Username</h1>
-	    <div contenteditable="true" class = "profile_bio"><p id="bio"> Bio </p></div>
-	</div>
-	<div class="following">
-		<h2>Following</h2>
-		<ul id="following-list">
+	<br>
+	<div class = profile__container>
+	    <h1 id="username">Username: </h1>
+	    <div contenteditable="false" class = "profile__goals"><p id="goals"> Gym Goals:  </p></div>
+		<br><br>
+		<table id ="posts__display">
+			<tr>
+				<th>  </th>
+			  	<th>Posts</th>
+				<th>  </th>
+			</tr>
+			<br>
+			<tr id="posts-table">
+			</tr>
+		</table>
 
-		</ul>
+		<h3>Followers</h3>
+		<ul id="followers-list"></ul>
+		<h3>Following</h3>
+		<ul id="following-list"></ul>
 	</div>
 	
-	<div class="followers">
-		<h2>Followers</h2>
-		<ul id="followers-list">
 
-		</ul>
-	</div>
+		
+	
+	
+	
 
 	<!-- You can also require other files to run in this process -->
 	<script defer src="../scripts/server.js"></script>
