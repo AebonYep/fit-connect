@@ -1,5 +1,4 @@
 
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +9,7 @@
 
 
 .navbar{
-    background: darkslategrey;
+    background: grey;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -111,7 +110,7 @@
 
 body{
     background: black;
-    color: #f77062;
+    color: white;
     font-family: 'Kumbh Sans',sans-serif;
 }
 
@@ -121,12 +120,12 @@ form{
     height: 300px;
     margin: auto;
     background-color: black;
-    border-radius: 3px;
+    border-radius: 1px solid white;
     border: none;
     text-align: center;
 }
 form label{
-    color: #f77062;
+    color: white;
     display: flex;
     margin-top: 20px;
     font-size: 18px;
@@ -134,34 +133,23 @@ form label{
 }
 
 form input{
+    color: white;
+    background-color: black;
     width: 100%;
     padding: 7px;
     border: 1px solid white;
     border-radius: 6px;
     outline: none;
-    background-color:  rgb(49, 49, 50);
-    color: white;
 
 }
 
-.profile__container{
-    width: 600px;
-    height: 300px;
-    margin: auto;
-    background-color: darkslategrey;
-    border-radius: 10px;
-    border: black;
-    text-align: center;
-    color: white;
-  }
-  .profile__bio {
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-  }
-
+form bioTextBox {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid white;
+    border-radius: 6px;
+    outline: none;
+}
 
 button{
     width: 320px;
@@ -171,7 +159,6 @@ button{
     background-color: #f77062;
     color: white;
     font-size: 18px;
-    outline: white;
 }
 
 button:hover {
@@ -184,17 +171,74 @@ h1{
     text-align: center;
 }
 
-table {
+  
+ .post__container{
+    
+        width: 600px;
+        height: 300px;
+        margin: auto;
+        background-color: rgb(41, 40, 40);
+        border-radius: 10px;
+        border: white;
+        text-align: center;
+        color: white;
+ }
+
+  
+  .profile__container{
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    background-color: darkgrey;
+    border-radius: 10px;
+    border: white;
+    text-align: center;
+    color: white;
+  }
+  .profile__bio {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+
+  table {
     font-family: arial, sans-serif;
     font-family: 'Kumbh Sans', sans-serif;
     border-collapse: collapse;
     width: 100%;
+    align-self: center;
   }
   
   td {
     border: none;
-    border: 1px solid black;
-    background-color: darkslategrey;
+    border: 1px solid white;
+    background-color: darkgrey;
     text-align: center;
     padding: 8px;
+  }
+
+  .msg__container{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    background-color: black;
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+  }
+
+  .noti__container{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    background-color: black;
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+    font-family: 'Kumbh Sans',sans-serif;
+    text-decoration: none;
   }
