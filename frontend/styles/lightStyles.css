@@ -232,14 +232,13 @@ h1{
   }
 
   .noti__container{
-    width: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: white;
+    padding: 0 16px;
     height: 100%;
-    margin: auto;
-    align-content: center;
-    background-color: white;
-    border: 1px solid black;
-    text-align: center;
-    color: black;
   }
 
 
