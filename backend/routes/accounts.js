@@ -265,12 +265,29 @@ router.post('/delete', (req, res) => {
 			console.log(result[0].password)
 
 			if (password === result[0].password) {
+				let deletePostsQuery = `DELETE FROM user_posts WHERE user_id=${userID}`
+				con.query(deletePostsQuery, (err) => {
+					if (err) {
+						res.sendStatus(500)
+						throw err
+					}
+					console.log(`Posts delete for userID=${userID}`)
+				})
+				let removeFollowersQuery = `DELETE FROM user_followers WHERE user_id=${userID} OR following_id=${userID}`
+				con.query(removeFollowersQuery, (err) => {
+					if (err) {
+						res.sendStatus(500)
+						throw err
+					}
+					console.log(`Followers removed for userID=${userID}`)
+				})
 				let deleteAccountQuery = `DELETE FROM user_accounts WHERE id=${userID}`
 				con.query(deleteAccountQuery, (err) => {
 					if (err) {
 						res.sendStatus(500)
 						throw err
 					}
+					console.log(`Account deleted userID: ${userID}`)
 					res.send(200)
 				})
 			}
