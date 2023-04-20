@@ -214,7 +214,7 @@ h1{
   
   td {
     border: none;
-    border: 1px solid black;
+    border: 1px solid grey;
     background-color: grey;
     text-align: center;
     padding: 8px;
@@ -226,9 +226,9 @@ h1{
     margin: auto;
     align-content: center;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid white;
     text-align: center;
-    color: black;
+    color: #f77062;
   }
 
   .noti__container{
@@ -241,6 +241,12 @@ h1{
     height: 100%;
   }
 
+  h2{
+    font-family: 'Kumbh Sans',sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #f77062;
+}
 
 
 

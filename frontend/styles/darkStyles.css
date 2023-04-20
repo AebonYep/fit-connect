@@ -213,7 +213,7 @@ h1{
   
   td {
     border: none;
-    border: 1px solid white;
+    border: 1px solid rgb(20, 18, 18);
     background-color: rgb(20, 18, 18);
     text-align: center;
     padding: 8px;
@@ -226,7 +226,7 @@ h1{
     margin: auto;
     align-content: center;
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid black ;
     text-align: center;
     color: white;
     text-decoration:none;
@@ -238,9 +238,16 @@ h1{
     margin: auto;
     align-content: center;
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid black;
     text-align: center;
     color: white;
     font-family: 'Kumbh Sans',sans-serif;
     text-decoration: none;
   }
+
+h2{
+    font-family: 'Kumbh Sans',sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
