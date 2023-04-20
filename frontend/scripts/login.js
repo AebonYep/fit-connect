@@ -36,7 +36,6 @@ loginBtn.addEventListener('click', async (event) => {
             console.log("ok")
             localStorage.setItem("admin", "true")
         }
-        alert("test")
         window.location.href = "../views/profile.html"
     }
     // Email already exists

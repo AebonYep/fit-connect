@@ -100,6 +100,7 @@ changeBioBtn.addEventListener('click', async (event) => {
 
 async function entryPoint() {
 	console.log("settings")
+	console.log(localStorage.getItem("admin"))
 	if (localStorage.getItem("admin") === "true") {
 		let text = `<form>
 			<label for="bio-current">User</label>
