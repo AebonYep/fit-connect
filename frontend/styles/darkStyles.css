@@ -172,3 +172,56 @@ button:hover {
 h1{
     text-align: center;
 }
+
+  
+.post__container{
+    
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    background-color: darkslategrey;
+    border-radius: 10px solid white;
+    border: white;
+    text-align: center;
+    color: white;
+}
+
+.profile__container{
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    background-color: darkslategrey;
+    border-radius: 10px;
+    border: white;
+    text-align: center;
+    color: white;
+  }
+  .profile__bio {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td {
+    border: none;
+    background-color: darkslategrey;
+    text-align: center;
+    padding: 8px;
+  }
+
+  th {
+    border: none;
+     
+  }
+  
+  tr {
+    background-color: darkslategrey;
+  }
