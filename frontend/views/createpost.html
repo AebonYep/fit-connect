@@ -5,7 +5,7 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-    <link href="./styles.css" rel="stylesheet">
+    <link id="style-sheet" href="../styles/lightStyles.css" rel="stylesheet">
     <title>Fit Connect</title>
   </head>
   <body>
@@ -45,10 +45,11 @@
         </ul>
       </div>
     </nav>
-
-    <h1 >Create post</h1> <br>
+    <h1>Fit-Connect</h1>
+    <br>
   
       <form >
+        <h1 >Create post</h1> <br>
         <label for="title-input">Post title:</label>
 				<input type="text" id="title-input" placeholder="Title" required><br>
                 <p><label for="Content">Content </label></p>
@@ -59,5 +60,6 @@
 
     <!-- You can also require other files to run in this process -->
     <script defer src="./renderer.js"></script>
+    <script defer src="../scripts/theme.js"></script>
   </body>
 </html>
