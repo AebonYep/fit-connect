@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <link id="style-sheet" href="../styles/lightStyles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link id="style-sheet" href="../styles/lightStyles.css" rel="stylesheet">
 
   <title>Fit Connect</title>
 </head>
@@ -44,7 +44,7 @@
           </a>
         </li>
 
-        <li class= "navbar__button">
+        <li class="navbar__button">
           <a class="button" id="switch">
             Switch Theme
           </a>
@@ -53,23 +53,37 @@
     </div>
   </nav>
 
-  <a href="createpost.html" class="button">Create post</a>
+  <a href="createPost.html" class="button">Create post</a>
 
- <br><br>
+  <br><br>
 
-  <div class="post__container">
-    <div class="post">
-      <p id="posts"></p>
+  <div id="posts">
+    <!-- <div class="post__container">
+      <div class="post">
+        <button id="follow-btn">Follow Button</button>
+        <button id="like-btn">Like Button</button>
+        <h3>This is the post title</h3>
+        <p id="posts">this is the post content</p>
+        <p>Likes: 0</p>
+      </div>
     </div>
-</div>
+    <br>
+    <div class="post__container">
+      <div class="post">
+        <h3>This is the post title</h3>
+        <p id="posts">this is the post content</p>
+      </div>
+    </div> -->
+  </div>
+
 
 
 
 
   <!-- You can also require other files to run in this process -->
   <script defer src="../scripts/server.js"></script>
-
-  <script defer src="../scripts/popular.js"></script>
+  <script defer src="../scripts/theme.js"></script>
+  <!-- <script defer src="../scripts/popular.js"></script> -->
 </body>
 
 </html>
