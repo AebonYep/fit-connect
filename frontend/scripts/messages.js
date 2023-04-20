@@ -62,7 +62,7 @@ async function loadmessages(otheruser){
     }
 
     text = ""
-    text += "<h>"+otherusername + "</h><br><br>"
+    text += "<h>"+otherusername + "</h><br>"
     for(var i = 0; i<jsonData.length; i++){
         if(i>10){i=9999}
         if(jsonData[i].sender_id == user){

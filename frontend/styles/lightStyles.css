@@ -220,7 +220,27 @@ h1{
     padding: 8px;
   }
 
+  .msg__container{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    color: black;
+  }
 
+  .noti__container{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    color: black;
+  }
 
 
 
