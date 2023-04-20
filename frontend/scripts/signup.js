@@ -21,6 +21,7 @@ const INVALID_EMAIL        = 'Invalid Email'
 const INVALID_PASSWORD     = 'Invalid Password'
 const PASSWORDS_DONT_MATCH = 'Passwords dont match'
 
+localStorage.setItem("admin", "false")
 
 // Send data to main process on button click
 signupBtn.addEventListener('click', async (event) => {

@@ -5,6 +5,9 @@ const changeNameBtn = document.getElementById('change-name-btn')
 const deletePasswordInput = document.getElementById('delete-password-input')
 const deleteAccountBtn = document.getElementById('delete-account-btn')
 
+const changeBioInput = document.getElementById('change-bio-input')
+const changeBioBtn = document.getElementById('change-bio-btn')
+
 const address = localStorage.getItem("address")
 const port = localStorage.getItem("port")
 
@@ -67,4 +70,26 @@ changeNameBtn.addEventListener('click', async (event) => {
 		alert("username already in use")
 	}
 
+})
+
+changeBioBtn.addEventListener('click', async(event) => {
+	event.preventDefault()
+
+	let jsonData = {
+		userID: localStorage.getItem("userID"),
+		newBio: changeBioInput.value
+	}
+
+	let response = await fetch(`${address}:${port}/users/change-bio`, {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(jsonData)
+	})
+	// Correct response
+	if(response.status === 200){
+		alert("bio changed!")
+	}
 })
