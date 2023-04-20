@@ -1,12 +1,9 @@
-const address = localStorage.getItem("address")
-const port = localStorage.getItem("port")
-
-const user = localStorage.getItem("userID"); //this needs to be updated to grab the current user
-const messagebutton = null
+const user = 1; //this needs to be updated to grab the current user
+const messagebutton = document.getElementById("messagebutton2")
 
 async function getdata() {
     console.log("something random")
-    const response = await fetch(`${address}:${port}/messages`);
+    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
     console.log(response.status)
     const jsonData = await response.json();
     console.log(jsonData)
@@ -33,9 +30,12 @@ async function getdata() {
     }
 
     //displays message ui (change this to display name and pfp in future)
+    
     text = ""
     for(var i = 0; i < users.length; i++){
-        text += "<button onclick=loadmessagepage("+ users[i]+")>" + users[i] + "</button> <br>"
+        const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${users[i]}`);
+        const jsonotherusernames = await otherusernames.json()
+        text += "<button onclick=loadmessagepage("+ users[i]+")>" + jsonotherusernames[0].name+ "</button> <br>"
     }
     document.getElementById("message ui").innerHTML = text;
 
@@ -44,10 +44,10 @@ async function getdata() {
 
 // this function is incomplete
 async function loadmessages(otheruser){
-    const response = await fetch(`${address}:${port}/messages/id=${user}&nextid=${otheruser}`  );
+    const response = await fetch(`http://lxfarm08:25565/messages/id=${user}&nextid=${otheruser}`  );
     const jsonData = await response.json();
-    const usernames = await fetch(`${address}:${port}/users/id=${user}`);
-    const otherusernames = await fetch(`${address}:${port}/users/id=${otheruser}`);
+    const usernames = await fetch(`http://lxfarm08:25565/users/id=${user}`);
+    const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${otheruser}`);
     const jsonusernames = await usernames.json()
     const jsonotherusernames = await otherusernames.json()
     username = jsonusernames[0].name
@@ -91,6 +91,16 @@ async function loadmessagepage(otheruser){
     window.location.href="../views/viewmessages.html"
 }
 
+messagebutton.addEventListener('click', async (event) => {
+    event.preventDefault()  
+    message = document.getElementById("messagebutton").value
+    const otheruserids = await fetch(`http://lxfarm08:25565/users/name=${message}`);
+    const otheruseridsjson = await otheruserids.json()
+    console.log(otheruseridsjson)
+    const otheruserid = otheruseridsjson[0].id
+    loadmessagepage(otheruserid)
+
+})
 
 textresult = "example text"
 document.getElementById("message ui").innerHTML = textresult;

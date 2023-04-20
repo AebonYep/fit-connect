@@ -1,16 +1,13 @@
-const address = localStorage.getItem("address")
-const port = localStorage.getItem("port")
-
 const messagebutton = document.getElementById("messagebutton2")
 
 async function loadmessages() {
     otheruser = localStorage.getItem("otheruserid")
-    user = localStorage.getItem("userID")
-
-    const response = await fetch(`${address}:${port}/messages/id=${user}&nextid=${otheruser}`);
+    //user = localStorage.getItem("userID")
+    user = 1
+    const response = await fetch(`http://lxfarm08:25565/messages/id=${user}&nextid=${otheruser}`);
     const jsonData = await response.json();
-    const usernames = await fetch(`${address}:${port}/users/id=${user}`);
-    const otherusernames = await fetch(`${address}:${port}/users/id=${otheruser}`);
+    const usernames = await fetch(`http://lxfarm08:25565/users/id=${user}`);
+    const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${otheruser}`);
     const jsonusernames = await usernames.json()
     const jsonotherusernames = await otherusernames.json()
     username = jsonusernames[0].name
@@ -55,11 +52,11 @@ messagebutton.addEventListener('click', async (event) => {
     console.log(message)
 
     let jsonData = {
-        userid: localStorage.getItem("userID"),
+        userid: 1,
         otheruserid: localStorage.getItem("otheruserid"),
         content: message
     }
-   let response = await fetch(`${address}:${port}/messages/create`, {
+   let response = await fetch(`http://lxfarm08:25565/messages/create`, {
         method: "POST",
         mode: "cors",
         headers: {
