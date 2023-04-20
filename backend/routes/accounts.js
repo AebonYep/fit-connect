@@ -304,6 +304,14 @@ router.post('/delete', (req, res) => {
 					}
 					console.log(`Posts delete for userID=${userID}`)
 				})
+				let deleteMessages = `DELETE FROM user_messages WHERE sender_id=${userID} OR sentto_id=${userID}`
+				con.query(deleteMessages, (err) => {
+					if (err) {
+						res.sendStatus(500)
+						throw err
+					}
+					console.log(`Followers removed for userID=${userID}`)
+				})
 				let removeFollowersQuery = `DELETE FROM user_followers WHERE user_id=${userID} OR following_id=${userID}`
 				con.query(removeFollowersQuery, (err) => {
 					if (err) {
