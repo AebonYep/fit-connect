@@ -28,17 +28,6 @@ router.get('/', (req, res) => {
 
 })
 
-router.get('/id=:postID', (req, res) => {
-	let { postID } = req.params
-
-	let getPostsQuery = `SELECT name, content, date FROM user_posts JOIN user_accounts ON user_accounts.id = user_posts.user_id WHERE user_posts.id=${postID}`
-
-	simpleGet(getPostsQuery, (result) => {
-		res.send(result)
-	})
-
-})
-
 router.post('/create', (req, res) => {
 	let userID = req.body.userID
 	let title = req.body.title

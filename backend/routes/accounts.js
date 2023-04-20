@@ -71,7 +71,7 @@ router.get('/id=:userID/followers', (req, res) => {
 router.get('/id=:userID/posts', (req, res) => {
 	let { userID } = req.params
 
-	let getPostsQuery = `SELECT content, date FROM user_posts WHERE user_id=${userID}`
+	let getPostsQuery = `SELECT title, content, date FROM user_posts WHERE user_id=${userID}`
 
 	simpleGet(getPostsQuery, (result) => {
 		res.send(result)
