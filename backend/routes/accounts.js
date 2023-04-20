@@ -179,7 +179,7 @@ router.post('/follow', (req, res) => {
 
 				})
 			}
-			else{
+			else {
 				res.send(409)
 			}
 		})
@@ -241,6 +241,36 @@ router.post('/change-username', (req, res) => {
 			else {
 				res.send(401)
 			}
+
+		}
+		else {
+			res.sendStatus(404)
+		}
+
+	})
+
+})
+
+router.post('/change-bio', (req, res) => {
+	let userID = req.body.userID
+	let newBio = req.body.newBio
+
+	let checkAccountQuery = `SELECT * FROM user_accounts WHERE id=${userID}`
+	con.query(checkAccountQuery, (err, result) => {
+		if (err) {
+			res.sendStatus(500)
+			throw err
+		}
+		if (result.length > 0) {
+
+			let changeNameQuery = `UPDATE user_accounts SET bio='${newBio}' WHERE id=${userID}`
+			con.query(changeNameQuery, (err) => {
+				if (err) {
+					res.sendStatus(500)
+					throw err
+				}
+				res.send(200)
+			})
 
 		}
 		else {
