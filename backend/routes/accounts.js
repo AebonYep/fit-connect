@@ -333,4 +333,49 @@ router.post('/delete', (req, res) => {
 	})
 })
 
+router.post('/admin/delete', (req, res) => {
+	let name = req.body.name
+
+	let checkAccountQuery = `SELECT * FROM user_accounts WHERE name='${name}'`
+	con.query(checkAccountQuery, (err, result) => {
+		if (err) {
+			res.sendStatus(500)
+		}
+		
+		if (result.length > 0) {
+			console.log(result[0])
+			let userID = result[0].id
+			let deletePostsQuery = `DELETE FROM user_posts WHERE user_id=${userID}`
+			con.query(deletePostsQuery, (err) => {
+				if (err) {
+					res.sendStatus(500)
+					throw err
+				}
+				console.log(`Posts delete for userID=${userID}`)
+			})
+			let removeFollowersQuery = `DELETE FROM user_followers WHERE user_id=${userID} OR following_id=${userID}`
+			con.query(removeFollowersQuery, (err) => {
+				if (err) {
+					res.sendStatus(500)
+					throw err
+				}
+				console.log(`Followers removed for userID=${userID}`)
+			})
+			let deleteAccountQuery = `DELETE FROM user_accounts WHERE id=${userID}`
+			con.query(deleteAccountQuery, (err) => {
+				if (err) {
+					res.sendStatus(500)
+					throw err
+				}
+				console.log(`Account deleted userID: ${userID}`)
+				res.send(200)
+			})
+		}
+		else {
+			res.sendStatus(404)
+		}
+
+	})
+})
+
 module.exports = router
