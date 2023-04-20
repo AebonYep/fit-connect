@@ -2,8 +2,7 @@ const messagebutton = document.getElementById("messagebutton2")
 
 async function loadmessages() {
     otheruser = localStorage.getItem("otheruserid")
-    //user = localStorage.getItem("userID")
-    user = 1
+    user = localStorage.getItem("userID")
     const response = await fetch(`http://lxfarm08:25565/messages/id=${user}&nextid=${otheruser}`);
     const jsonData = await response.json();
     const usernames = await fetch(`http://lxfarm08:25565/users/id=${user}`);
@@ -12,7 +11,6 @@ async function loadmessages() {
     const jsonotherusernames = await otherusernames.json()
     username = jsonusernames[0].name
     otherusername = jsonotherusernames[0].name
-    //clean through message data this is about as insecure as it gets please someone make this filter server side because any user could easily read any other users messages right now
     for (var i = 0; i < jsonData.length; i++) {
         console.log(jsonData[i])
         if ((jsonData[i].sender_id != user && jsonData[i].sentto_id != user)) {
@@ -68,6 +66,6 @@ messagebutton.addEventListener('click', async (event) => {
 
 })
 
-textresult = "example text"
+textresult = "no messages"
 window.onload = loadmessages()
 document.getElementById("viewmessage").innerHTML = textresult;
