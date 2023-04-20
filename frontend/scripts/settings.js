@@ -5,7 +5,7 @@ const changeNameBtn = document.getElementById('change-name-btn')
 const deletePasswordInput = document.getElementById('delete-password-input')
 const deleteAccountBtn = document.getElementById('delete-account-btn')
 
-const currentBioLabel = document.getElementById('bio-current')
+const currentBioLabel = document.getElementById('goals-current')
 const changeBioInput = document.getElementById('change-bio-input')
 const changeBioBtn = document.getElementById('change-bio-btn')
 
@@ -93,9 +93,10 @@ changeBioBtn.addEventListener('click', async (event) => {
 	})
 	// Correct response
 	if (response.status === 200) {
-		alert("bio changed!")
+		alert("Goals changed!")
 		window.location.reload()
 	}
+
 })
 
 async function entryPoint() {
@@ -143,6 +144,7 @@ async function entryPoint() {
 	let response = await fetch(`${address}:${port}/users/id=${userID}`)
 	let jsonData = await response.json()
 
+	console.log(jsonData[0].bio)
 	currentBioLabel.innerHTML = jsonData[0].bio
 
 	

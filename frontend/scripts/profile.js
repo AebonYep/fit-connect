@@ -3,7 +3,7 @@ const address = localStorage.getItem("address")
 const port = localStorage.getItem("port")
 
 const usernameLabel = document.getElementById('username')
-const bioLabel = document.getElementById('bio')
+const bioLabel = document.getElementById('goals')
 const followingList = document.getElementById('following-list')
 const followersList = document.getElementById('followers-list')
 const posts = document.getElementById('posts-table')
