@@ -67,10 +67,14 @@ async function loadnotifs2(){
 
     }
     for(var i =0; i<jsonData.length; i++){
-        otheruser = jsonData[i].sentto_id
+        try{
+        otheruser = jsonData[i].sender_id
         const otherusernames = await fetch(`http://lxfarm08:25565/users/id=${otheruser}`);
         const jsonotherusernames = await otherusernames.json()
         text+="<a href=\"../views/messages.html\">New Message from "+ jsonotherusernames[0].name+ "   received: " + jsonData[i].sent.slice(10, 19).replace('T', ' ') + "</a><br>"
+        }catch{
+            
+        }
     }
     document.getElementById("notifications").innerHTML = text;
 
