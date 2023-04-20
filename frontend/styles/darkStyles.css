@@ -140,6 +140,7 @@ form input{
     border-radius: 6px;
     outline: none;
     background-color:  rgb(49, 49, 50);
+    color: white;
 
 }
 
@@ -171,4 +172,35 @@ button:hover {
 
 h1{
     text-align: center;
+}
+.post__container{
+    
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    background-color: grey;
+    border-radius: 10px;
+    border: black;
+    text-align: center;
+    color: white;
+}
+
+#imageUpload
+{
+  display: none;
+}
+
+.profile_pic {
+border-radius: 50%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 25%;
+}
+.profile_bio {
+text-align: center;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 25%;
 }
