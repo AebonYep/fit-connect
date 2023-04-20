@@ -1,7 +1,11 @@
+const address = localStorage.getItem("address")
+const port = localStorage.getItem("port")
+
+
 const user = 2; //this needs to be updated to grab the current user
 
 async function getdata() {
-    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
+    const response = await fetch(`${address}:${port}/messages`);
     const jsonData = await response.json();
     //clean through message data this is about as insecure as it gets please someone make this filter server side because any user could easily read any other users messages right now
     for(var i =0; i<jsonData.length; i++){
@@ -39,7 +43,7 @@ async function getdata() {
 
 // this function is incomplete
 async function loadmessages(otheruser){
-    const response = await fetch("http://lxfarm08.csc.liv.ac.uk:25565/messages");
+    const response = await fetch(`${address}:${port}/messages`);
     const jsonData = await response.json();
     console.log(jsonData)
     //clean through message data this is about as insecure as it gets please someone make this filter server side because any user could easily read any other users messages right now
@@ -48,7 +52,6 @@ async function loadmessages(otheruser){
         if ((jsonData[i].sender_id != user && jsonData[i].sentto_id != user) || (jsonData[i].sender_id != otheruser && jsonData[i].sentto_id != otheruser)){
             jsonData.splice(i, 1)
         }
-
     }
 
     console.log(jsonData)
@@ -57,6 +60,6 @@ async function loadmessages(otheruser){
 }
 
 
-window.onload = getdata
+window.onload = getdata()
 textresult = "example text"
 document.getElementById("message ui").innerHTML = textresult;
