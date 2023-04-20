@@ -1,5 +1,4 @@
 
-localStorage.setItem("userID", 2)
 window.onload = loadnotifs();
 const notificationsParagraph = document.getElementById('notifications')
 const notificationReadColour = "DodgerBlue";
